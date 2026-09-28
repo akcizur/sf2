@@ -5,11 +5,12 @@ type Props = { value: number; onChange: (v: number) => void; min?: number; size?
 
 export default function QuantitySelector({ value, onChange, min = 1, size = "md" }: Props) {
   const btn = cn(
-    "flex cursor-pointer items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground disabled:opacity-40",
+    "neu-control flex cursor-pointer items-center justify-center rounded-full text-muted-foreground transition hover:bg-accent hover:text-foreground active:scale-[0.97] disabled:opacity-40",
     size === "md" ? "size-10" : "size-7",
   );
+
   return (
-    <div className="inline-flex items-center rounded-[30px] bg-secondary p-1">
+    <div className="neu-control inline-flex items-center rounded-[30px] p-1">
       <button type="button" aria-label="Decrease" className={btn} disabled={value <= min} onClick={() => onChange(value - 1)}>
         <Minus className="size-4" />
       </button>
