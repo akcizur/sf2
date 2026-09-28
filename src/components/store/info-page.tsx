@@ -19,8 +19,8 @@ export function InfoCards({ items }: { items: InfoCard[] }) {
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {items.map((c) => (
-        <div key={c.title} className="rounded-[20px] bg-card p-6 shadow-xl shadow-black/30">
-          <div className="flex size-10 items-center justify-center rounded-full bg-primary/15 text-primary">
+        <div key={c.title} className="neu-surface rounded-[20px] p-6 transition duration-300 hover:-translate-y-0.5">
+          <div className="neu-control flex size-10 items-center justify-center rounded-full text-primary">
             <c.icon className="size-5" />
           </div>
           <h3 className="pt-6 font-medium">{c.title}</h3>
