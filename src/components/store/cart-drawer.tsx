@@ -10,6 +10,7 @@ import QuantitySelector from "./quantity-selector.tsx";
 
 export default function CartDrawer() {
   const { items, subtotal, isOpen, setOpen, setQuantity, remove } = useCart();
+
   return (
     <Sheet open={isOpen} onOpenChange={setOpen}>
       <SheetContent side="right" className="flex w-full flex-col gap-0 border-l bg-background sm:max-w-[420px]">
@@ -17,6 +18,7 @@ export default function CartDrawer() {
           <SheetTitle className="text-xl">Your cart</SheetTitle>
           <SheetDescription className="sr-only">Items in your cart</SheetDescription>
         </SheetHeader>
+
         {items.length === 0 ? (
           <Empty className="flex-1">
             <EmptyHeader>
@@ -34,8 +36,8 @@ export default function CartDrawer() {
           <>
             <ul className="flex-1 space-y-3 overflow-auto px-6">
               {items.map((i) => (
-                <li key={i.slug} className="flex gap-4 rounded-[20px] bg-card p-3">
-                  <img src={i.product.image} alt={i.product.name} className="size-20 shrink-0 rounded-[16px] object-cover" />
+                <li key={i.slug} className="neu-surface-soft flex gap-4 rounded-[20px] p-3">
+                  <img src={i.product.image} alt={i.product.name} className="neu-media size-20 shrink-0 rounded-[16px] object-cover" />
                   <div className="flex min-w-0 flex-1 flex-col justify-between">
                     <div className="flex items-start justify-between gap-2">
                       <p className="truncate text-sm font-medium">{i.product.name}</p>
@@ -43,7 +45,7 @@ export default function CartDrawer() {
                         type="button"
                         aria-label="Remove"
                         onClick={() => remove(i.slug)}
-                        className="cursor-pointer text-muted-foreground transition hover:text-foreground"
+                        className="neu-control flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition hover:text-foreground"
                       >
                         <Trash2 className="size-4" />
                       </button>
@@ -56,7 +58,8 @@ export default function CartDrawer() {
                 </li>
               ))}
             </ul>
-            <div className="space-y-4 border-t p-6">
+
+            <div className="neu-surface-soft mt-3 space-y-4 rounded-t-[24px] border-x-0 border-b-0 p-6">
               <div className="flex items-center justify-between">
                 <span className="text-sm text-muted-foreground">Subtotal</span>
                 <span className="text-lg font-medium tabular-nums">{formatPrice(subtotal)}</span>
