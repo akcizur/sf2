@@ -47,17 +47,125 @@
   --border: rgb(243 234 224 / 9%);
   --input: rgb(243 234 224 / 14%);
   --ring: #c8794f;
+
+  --neu-dark: rgb(0 0 0 / 34%);
+  --neu-light: rgb(255 239 225 / 4.5%);
+  --neu-inner-dark: rgb(0 0 0 / 26%);
+  --neu-inner-light: rgb(255 239 225 / 6%);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    background: var(--background);
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at 8% -2%, rgb(255 211 184 / 5%), transparent 31rem),
+      radial-gradient(circle at 94% 108%, rgb(200 121 79 / 6%), transparent 34rem);
+    background-attachment: fixed;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+
+  ::selection {
+    background: rgb(200 121 79 / 28%);
+  }
+}
+
+/* A restrained dark neumorphic system: soft elevation, inset depth and physical interaction. */
+@layer components {
+  .neu-surface {
+    border: 1px solid rgb(243 234 224 / 6%);
+    background: var(--card);
+    box-shadow:
+      12px 12px 28px var(--neu-dark),
+      -8px -8px 22px var(--neu-light),
+      inset 1px 1px 0 var(--neu-inner-light),
+      inset -1px -1px 0 var(--neu-inner-dark);
+  }
+
+  .neu-surface-soft {
+    border: 1px solid rgb(243 234 224 / 5%);
+    background: color-mix(in srgb, var(--card) 92%, var(--background));
+    box-shadow:
+      8px 8px 20px rgb(0 0 0 / 24%),
+      -5px -5px 16px rgb(255 239 225 / 3%),
+      inset 1px 1px 0 rgb(255 239 225 / 4%);
+  }
+
+  .neu-control {
+    border: 1px solid rgb(243 234 224 / 6%);
+    background: var(--secondary);
+    box-shadow:
+      5px 5px 12px rgb(0 0 0 / 30%),
+      -4px -4px 10px rgb(255 239 225 / 4%),
+      inset 1px 1px 0 rgb(255 239 225 / 4%);
+  }
+
+  .neu-control:hover {
+    box-shadow:
+      6px 6px 14px rgb(0 0 0 / 32%),
+      -4px -4px 11px rgb(255 239 225 / 5%),
+      inset 1px 1px 0 rgb(255 239 225 / 5%);
+  }
+
+  .neu-control:active,
+  .neu-control[data-state="open"] {
+    box-shadow:
+      inset 4px 4px 9px rgb(0 0 0 / 28%),
+      inset -3px -3px 8px rgb(255 239 225 / 3%);
+  }
+
+  .neu-button {
+    border: 1px solid rgb(255 227 208 / 10%);
+    box-shadow:
+      7px 7px 15px rgb(0 0 0 / 30%),
+      -5px -5px 12px rgb(255 239 225 / 5%),
+      inset 1px 1px 0 rgb(255 239 225 / 8%);
+  }
+
+  .neu-button:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      8px 9px 18px rgb(0 0 0 / 34%),
+      -5px -5px 13px rgb(255 239 225 / 6%),
+      inset 1px 1px 0 rgb(255 239 225 / 9%);
+  }
+
+  .neu-button:active {
+    transform: translateY(1px);
+    box-shadow:
+      inset 5px 5px 10px rgb(117 56 33 / 24%),
+      inset -3px -3px 8px rgb(255 239 225 / 4%);
+  }
+
+  .neu-media {
+    box-shadow:
+      10px 10px 24px rgb(0 0 0 / 24%),
+      -5px -5px 16px rgb(255 239 225 / 3%),
+      inset 0 0 0 1px rgb(243 234 224 / 5%);
+  }
+
+  .neu-divider {
+    border-color: rgb(243 234 224 / 8%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neu-button:hover {
+    transform: none;
+  }
+
+  * {
+    scroll-behavior: auto !important;
   }
 }
