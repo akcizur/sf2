@@ -16,7 +16,7 @@ export default function ProductPage() {
   const category = getCategory(product.category);
 
   return (
-    <div>
+    <div className="pb-12">
       <Breadcrumbs
         items={[
           { label: "Home", to: "/" },
@@ -25,13 +25,20 @@ export default function ProductPage() {
           { label: product.name },
         ]}
       />
+
       <div className="grid gap-12 pt-8 lg:grid-cols-[600px_1fr]">
-        <img src={product.image} alt={product.name} className="aspect-[600/560] w-full rounded-[24px] object-cover" />
+        <img
+          src={product.image}
+          alt={product.name}
+          className="aspect-[600/560] w-full rounded-[24px] object-cover"
+        />
+
         <div className="lg:pt-6">
           <p className="text-xs font-medium tracking-[0.3em] text-primary uppercase">{category?.name}</p>
           <h1 className="pt-3 text-4xl font-semibold tracking-tight md:text-5xl">{product.name}</h1>
           <p className="pt-6 text-2xl tabular-nums">{formatPrice(product.price)}</p>
           <p className="max-w-lg pt-6 text-muted-foreground">{product.description}</p>
+
           <div className="flex flex-wrap items-center gap-4 pt-8">
             <QuantitySelector value={quantity} onChange={setQuantity} />
             <button
@@ -47,6 +54,48 @@ export default function ProductPage() {
           </div>
         </div>
       </div>
+
+      <section className="mt-20 border-t border-border/60 pt-12">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:gap-20">
+          <div>
+            <p className="text-xs font-medium tracking-[0.3em] text-primary uppercase">Details</p>
+            <h2 className="pt-3 text-2xl font-semibold tracking-tight">Product information</h2>
+            <p className="max-w-md pt-4 text-sm leading-6 text-muted-foreground">
+              A simple overview of the materials, making and everyday use behind this piece.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-[20px] bg-card">
+            <dl className="divide-y divide-border/60">
+              {product.specifications.map((item) => (
+                <div key={item.label} className="grid grid-cols-[minmax(110px,0.7fr)_1fr] gap-6 px-6 py-4 sm:px-7">
+                  <dt className="text-sm text-muted-foreground">{item.label}</dt>
+                  <dd className="text-sm font-medium">{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section className="pt-16">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <p className="text-xs font-medium tracking-[0.3em] text-primary uppercase">Specifications</p>
+            <h2 className="pt-3 text-2xl font-semibold tracking-tight">At a glance</h2>
+          </div>
+          <span className="hidden text-xs text-muted-foreground sm:block">{category?.name}</span>
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {product.specifications.map((item) => (
+            <div key={item.label} className="rounded-[20px] bg-card p-6 shadow-xl shadow-black/20">
+              <p className="text-xs font-medium tracking-[0.2em] text-primary uppercase">{item.label}</p>
+              <p className="pt-4 text-sm leading-6">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
