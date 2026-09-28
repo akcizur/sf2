@@ -33,7 +33,7 @@ export default function Index() {
           <motion.div {...fade(0.3)} className="pt-8">
             <Link
               to="/shop"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-[30px] bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition hover:brightness-110"
+              className="neu-button inline-flex cursor-pointer items-center gap-2 rounded-[30px] bg-primary px-7 py-3.5 text-sm font-medium text-primary-foreground transition-all hover:brightness-110"
             >
               Shop the collection <ArrowRight className="size-4" />
             </Link>
@@ -45,14 +45,14 @@ export default function Index() {
           transition={{ duration: 0.9, ease: "easeOut" }}
           src={HERO_IMAGE}
           alt="Terracotta and stoneware on a wooden table"
-          className="aspect-square w-full rounded-[24px] object-cover lg:max-h-[560px]"
+          className="neu-media aspect-square w-full rounded-[24px] object-cover lg:max-h-[560px]"
         />
       </section>
 
       <section className="grid gap-6 md:grid-cols-3">
         {FEATURES.map((f) => (
-          <div key={f.title} className="rounded-[20px] bg-card p-8">
-            <div className="flex size-10 items-center justify-center rounded-full bg-primary/15 text-primary">
+          <div key={f.title} className="neu-surface rounded-[20px] p-8 transition duration-300 hover:-translate-y-0.5">
+            <div className="neu-control flex size-10 items-center justify-center rounded-full text-primary">
               <f.icon className="size-5" />
             </div>
             <h3 className="pt-6 font-medium">{f.title}</h3>
