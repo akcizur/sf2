@@ -8,14 +8,16 @@
   <body>
     <script>
       (() => {
-        const base = "/storefront/";
+        const base = "/sf2/";
         const path = window.location.pathname.startsWith(base)
           ? window.location.pathname.slice(base.length)
           : window.location.pathname.replace(/^\/+/, "");
+
         sessionStorage.setItem(
           "github-pages-path",
           path + window.location.search + window.location.hash
         );
+
         window.location.replace(base);
       })();
     </script>
