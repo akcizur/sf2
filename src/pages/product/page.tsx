@@ -30,7 +30,7 @@ export default function ProductPage() {
         <img
           src={product.image}
           alt={product.name}
-          className="aspect-[600/560] w-full rounded-[24px] object-cover"
+          className="neu-media aspect-[600/560] w-full rounded-[24px] object-cover"
         />
 
         <div className="lg:pt-6">
@@ -47,7 +47,7 @@ export default function ProductPage() {
                 add(product.slug, quantity);
                 setQuantity(1);
               }}
-              className="inline-flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-[30px] bg-primary px-8 text-sm font-medium text-primary-foreground transition hover:brightness-110"
+              className="neu-button inline-flex h-12 flex-1 cursor-pointer items-center justify-center gap-2 rounded-[30px] bg-primary px-8 text-sm font-medium text-primary-foreground transition-all hover:brightness-110"
             >
               <ShoppingBag className="size-4" /> Add to cart
             </button>
@@ -65,7 +65,7 @@ export default function ProductPage() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-[20px] bg-card">
+          <div className="neu-surface overflow-hidden rounded-[20px]">
             <dl className="divide-y divide-border/60">
               {product.specifications.map((item) => (
                 <div key={item.label} className="grid grid-cols-[minmax(110px,0.7fr)_1fr] gap-6 px-6 py-4 sm:px-7">
@@ -89,7 +89,7 @@ export default function ProductPage() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {product.specifications.map((item) => (
-            <div key={item.label} className="rounded-[20px] bg-card p-6 shadow-xl shadow-black/20">
+            <div key={item.label} className="neu-surface rounded-[20px] p-6 transition duration-300 hover:-translate-y-0.5">
               <p className="text-xs font-medium tracking-[0.2em] text-primary uppercase">{item.label}</p>
               <p className="pt-4 text-sm leading-6">{item.value}</p>
             </div>
