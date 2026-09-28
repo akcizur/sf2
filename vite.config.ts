@@ -8,7 +8,8 @@ const srcDir = fileURLToPath(new URL("./src", import.meta.url));
 const isGitHubActions = process.env.GITHUB_ACTIONS === "true";
 
 export default defineConfig({
-  base: isGitHubActions ? "/storefront/" : "/",
+  // GitHub Pages serves this project from /sf2/.
+  base: isGitHubActions ? "/sf2/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
